@@ -1,4 +1,4 @@
-package com.assignment.assignment.controller;
+package com.assignment.programming3assignment.controller;
 
 import com.assignment.assignment.util.AlertDialogUtil;
 import javafx.beans.property.SimpleStringProperty;
@@ -95,5 +95,86 @@ public class MainFormController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void createColumns(String[] headers) {
+        for (int i = 0; i < headers.length; i++) {
+            final int colIndex = i;
+            TableColumn<ObservableList<String>, String> column = new TableColumn<>(headers[i]);
+            column.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().get(colIndex)));
+            tableView.getColumns().add(column);
+        }
+    }
+
+    private void identifyNumericColumns() {
+        for (int colIndex = 0; colIndex < tableView.getColumns().size(); colIndex++) {
+
+            boolean isNumeric = true;
+
+            for (ObservableList<String> row : data) {
+                String cellValue = row.get(colIndex);
+                if (cellValue == null || !cellValue.matches("-?\\d+(\\.\\d+)?")) { // Check for numeric values
+                    isNumeric = false;
+                    break;
+                }
+            }
+
+            if (isNumeric) {
+                String columnName = tableView.getColumns().get(colIndex).getText();
+                numericColumnComboBox.getItems().add(colIndex + " - " + columnName); // Add index and name to ComboBox
+            }
+        }
+    }
+
+    @FXML
+    private void showSelectedColumn(ActionEvent event) {
+        try {
+            int columnIndex = Integer.parseInt(columnIndexField.getText());
+
+            if (columnIndex >= 0 && columnIndex < tableView.getColumns().size()) {
+                ObservableList<Double> columnData = FXCollections.observableArrayList(); // Changed to hold Doubles
+                String columnHeader = tableView.getColumns().get(columnIndex).getText();
+
+                for (ObservableList<String> row : data) {
+                    try {
+                        // Try parsing each cell as a Double
+                        columnData.add(Double.parseDouble(row.get(columnIndex)));
+                    } catch (NumberFormatException e) {
+                        columnData.add(Double.NaN);
+                    }
+                }
+
+                openColumnWindow(columnHeader, columnData); // Pass the Double list
+            } else {
+                AlertDialogUtil.showWarning("Invalid column index. Please enter a number between 0 and " +
+                        (tableView.getColumns().size() - 1));
+            }
+        } catch (NumberFormatException e) {
+            AlertDialogUtil.showWarning("Please enter a valid number");
+        }
+    }
+
+    // Handle selection from the numeric column ComboBox
+    @FXML
+    private void handleNumericColumnSelection(ActionEvent event) {
+        String selectedColumn = numericColumnComboBox.getSelectionModel().getSelectedItem();
+        if (selectedColumn != null) {
+            int columnIndex = Integer.parseInt(selectedColumn.split(" - ")[0]);
+            showSelectedColumnData(columnIndex);
+        }
+    }
+
+    private void showSelectedColumnData(int columnIndex) {
+        ObservableList<Double> columnData = FXCollections.observableArrayList();
+        String columnHeader = tableView.getColumns().get(columnIndex).getText();
+
+        for (ObservableList<String> row : data) {
+            try {
+                columnData.add(Double.parseDouble(row.get(columnIndex)));
+            } catch (NumberFormatException e) {
+                columnData.add(Double.NaN);
+            }
+        }
+        openColumnWindow(columnHeader, columnData);  // Pass the Double list
     }
 }

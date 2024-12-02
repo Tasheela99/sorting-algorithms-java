@@ -1,6 +1,6 @@
-package com.assignment.programming3assignment.controller;
+package com.assignment.programming3assignment.controllers;
 
-import com.assignment.assignment.util.AlertDialogUtil;
+import com.assignment.programming3assignment.util.AlertDialogUtil;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -176,5 +176,23 @@ public class MainFormController {
             }
         }
         openColumnWindow(columnHeader, columnData);  // Pass the Double list
+    }
+
+    private void openColumnWindow(String columnHeader, ObservableList<Double> columnData) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment/programming3assignment/AnalysisScreen.fxml"));
+            Parent root = loader.load();
+
+            AnalysisScreenController controller = loader.getController();
+            controller.setColumnData(columnHeader, columnData);
+
+            Stage stage = new Stage();
+            stage.setTitle("Analysis Screen - " + columnHeader);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            AlertDialogUtil.showError("Error loading column view window");
+        }
     }
 }

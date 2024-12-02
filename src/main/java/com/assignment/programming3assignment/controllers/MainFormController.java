@@ -6,8 +6,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -172,5 +176,23 @@ public class MainFormController {
             }
         }
         openColumnWindow(columnHeader, columnData);  // Pass the Double list
+    }
+
+    private void openColumnWindow(String columnHeader, ObservableList<Double> columnData) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/assignment/programming3assignment/AnalysisScreen.fxml"));
+            Parent root = loader.load();
+
+            AnalysisScreenController controller = loader.getController();
+            controller.setColumnData(columnHeader, columnData);
+
+            Stage stage = new Stage();
+            stage.setTitle("Analysis Screen - " + columnHeader);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            AlertDialogUtil.showError("Error loading column view window");
+        }
     }
 }

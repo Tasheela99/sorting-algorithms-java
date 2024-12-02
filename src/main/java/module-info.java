@@ -5,4 +5,6 @@ module com.assignment.programming3assignment {
 
     opens com.assignment.programming3assignment to javafx.fxml;
     exports com.assignment.programming3assignment;
+    exports com.assignment.programming3assignment.controllers;
+    opens com.assignment.programming3assignment.controllers to javafx.fxml;
 }

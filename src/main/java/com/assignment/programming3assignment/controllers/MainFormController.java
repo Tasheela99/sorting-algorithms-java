@@ -1,4 +1,4 @@
-package com.assignment.programming3assignment.controller;
+package com.assignment.programming3assignment.controllers;
 
 import com.assignment.assignment.util.AlertDialogUtil;
 import javafx.beans.property.SimpleStringProperty;
@@ -6,12 +6,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.File;

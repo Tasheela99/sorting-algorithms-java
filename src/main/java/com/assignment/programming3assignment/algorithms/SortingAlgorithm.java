@@ -1,5 +1,5 @@
-// Source code is decompiled from a .class file using FernFlower decompiler.
-package com.assignment.assignment.algorithms;
+package com.assignment.programming3assignment.algorithms;// Source code is decompiled from a .class file using FernFlower decompiler.
+
 
 public interface SortingAlgorithm {
    void sort(double[] var1);

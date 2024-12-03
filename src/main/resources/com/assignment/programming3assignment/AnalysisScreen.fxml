@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
@@ -23,73 +24,106 @@
     <VBox spacing="15" HBox.hgrow="ALWAYS">
         <VBox spacing="10">
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Button fx:id="mergeSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="292.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Merge Sort">
+                <Button fx:id="mergeSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="292.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Merge Sort">
                     <font>
                         <Font size="15.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Label fx:id="mergeSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #ff7f50; -fx-border-width: 1; -fx-padding: 5;" textAlignment="CENTER">
+                <Label fx:id="mergeSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #a4b0be; -fx-border-width: 1; -fx-padding: 5; -fx-border-radius: 10;" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
                 </Label>
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Button fx:id="quickSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="292.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Quick Sort">
+                <Button fx:id="quickSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="292.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Quick Sort">
                <font>
                   <Font size="15.0" />
-               </font></Button>
-                <Label fx:id="quickSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #ff7f50; -fx-border-width: 1; -fx-padding: 5;" textAlignment="CENTER">
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Label fx:id="quickSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #a4b0be; -fx-border-width: 1; -fx-padding: 5; -fx-border-radius: 10;" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
                 </Label>
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Button fx:id="insertionSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Insertion Sort">
+                <Button fx:id="insertionSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Insertion Sort">
                <font>
                   <Font size="15.0" />
-               </font></Button>
-                <Label fx:id="insertionSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #ff7f50; -fx-border-width: 1; -fx-padding: 5;" textAlignment="CENTER">
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Label fx:id="insertionSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #a4b0be; -fx-border-width: 1; -fx-padding: 5; -fx-border-radius: 10;" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
                 </Label>
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Button fx:id="shellSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Shell Sort">
+                <Button fx:id="shellSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Shell Sort">
                <font>
                   <Font size="15.0" />
-               </font></Button>
-                <Label fx:id="shellSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #ff7f50; -fx-border-width: 1; -fx-padding: 5;" textAlignment="CENTER">
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Label fx:id="shellSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #a4b0be; -fx-border-width: 1; -fx-padding: 5; -fx-border-radius: 10;" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
                 </Label>
             </HBox>
 
             <HBox alignment="CENTER_LEFT" spacing="10">
-                <Button fx:id="heapSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Heap Sort">
+                <Button fx:id="heapSortButton" minHeight="50.0" minWidth="120.0" prefHeight="50.0" prefWidth="291.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Heap Sort">
                <font>
                   <Font size="15.0" />
-               </font></Button>
-                <Label fx:id="heapSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #ff7f50; -fx-border-width: 1; -fx-padding: 5;" textAlignment="CENTER">
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+                <Label fx:id="heapSortTimeLabel" alignment="CENTER" contentDisplay="CENTER" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="150.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-border-color: #a4b0be; -fx-border-width: 1; -fx-padding: 5; -fx-border-radius: 10;" textAlignment="CENTER">
                     <font>
                         <Font size="20.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="DISAPPEAR" />
+               </cursor>
                 </Label>
             </HBox>
 
-            <Button fx:id="showBestButton" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="500.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: white;" text="Show Best Algorithm" textFill="WHITE">
+            <Button fx:id="showBestButton" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="500.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #a4b0be; -fx-text-fill: #2f3542; -fx-border-radius: 10;" text="Show Best Algorithm" textFill="WHITE">
             <font>
-               <Font size="15.0" />
-            </font></Button>
+               <Font name="System Bold" size="18.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor></Button>
         </VBox>
 
-        <BarChart fx:id="sortingTimeBarChart" animated="false" focusTraversable="true" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ffffff;" VBox.vgrow="ALWAYS">
+        <BarChart fx:id="sortingTimeBarChart" alternativeColumnFillVisible="true" animated="false" focusTraversable="true" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ffffff;" VBox.vgrow="ALWAYS">
             <xAxis>
                 <CategoryAxis animated="false" label="Sorting Algorithm" style="-fx-font-family: 'Comfortaa SemiBold';" />
             </xAxis>
@@ -99,6 +133,12 @@
          <effect>
             <Glow />
          </effect>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
         </BarChart>
+      <cursor>
+         <Cursor fx:constant="OPEN_HAND" />
+      </cursor>
     </VBox>
 </HBox>

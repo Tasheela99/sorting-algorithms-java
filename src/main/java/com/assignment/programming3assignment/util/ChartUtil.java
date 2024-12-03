@@ -38,6 +38,14 @@ public class ChartUtil {
             series.getData().add(new XYChart.Data<>(heapSort, heapSortTime));
         }
 
+        for (XYChart.Data<String, Number> data : series.getData()) {
+            data.nodeProperty().addListener((observable, oldValue, newValue) -> {
+                if (newValue != null) {
+                    newValue.setStyle("-fx-bar-fill: #747d8c;");
+                }
+            });
+        }
+
         barChart.getData().clear();
         barChart.getData().add(series);
     }

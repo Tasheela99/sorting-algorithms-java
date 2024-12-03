@@ -111,7 +111,7 @@ public class AnalysisScreenController {
                 heapSort.getName()
         };
 
-        int bestAlgorithmIndex = chartUtil.findBestAlgorithm(sortingTimes, algorithmNames);
+        int bestAlgorithmIndex = findBestAlgorithm(sortingTimes, algorithmNames);
 
         if (bestAlgorithmIndex == -1) {
             AlertDialogUtil.showWarning("Click on sorting algorithm buttons to measure their performance.");
@@ -123,6 +123,20 @@ public class AnalysisScreenController {
                 algorithmNames[bestAlgorithmIndex],
                 sortingTimes[bestAlgorithmIndex]
         ));
+    }
+
+    private int findBestAlgorithm(double[] sortingTimes, String[] algorithmNames) {
+        int bestAlgorithmIndex = -1;
+        double bestTime = Double.MAX_VALUE;
+
+        for (int i = 0; i < sortingTimes.length; i++) {
+            if (sortingTimes[i] < bestTime && sortingTimes[i] != Double.MAX_VALUE) {
+                bestTime = sortingTimes[i];
+                bestAlgorithmIndex = i;
+            }
+        }
+
+        return bestAlgorithmIndex;
     }
 
     private void updateBarChart() {

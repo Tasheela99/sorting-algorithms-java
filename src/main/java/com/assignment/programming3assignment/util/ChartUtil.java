@@ -42,17 +42,5 @@ public class ChartUtil {
         barChart.getData().add(series);
     }
 
-    public int findBestAlgorithm(double[] sortingTimes, String[] algorithmNames) {
-        int bestAlgorithmIndex = -1;
-        double bestTime = Double.MAX_VALUE;
 
-        for (int i = 0; i < sortingTimes.length; i++) {
-            if (sortingTimes[i] < bestTime && sortingTimes[i] != Double.MAX_VALUE) {
-                bestTime = sortingTimes[i];
-                bestAlgorithmIndex = i;
-            }
-        }
-
-        return bestAlgorithmIndex;
-    }
 }

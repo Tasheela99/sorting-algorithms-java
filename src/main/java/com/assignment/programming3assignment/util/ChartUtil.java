@@ -42,4 +42,5 @@ public class ChartUtil {
         barChart.getData().add(series);
     }
 
+
 }

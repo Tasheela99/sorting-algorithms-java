@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="675.0" prefWidth="610.0" spacing="20" style="-fx-font-family: 'Comfortaa SemiBold';" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.programming3assignment.controllers.MainFormController">
+<VBox prefHeight="675.0" prefWidth="610.0" spacing="20" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.assignment.programming3assignment.controllers.MainFormController">
 
     <padding>
         <Insets bottom="20" left="20" right="20" top="20" />
@@ -30,7 +30,7 @@
     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2020T00880 | 2020T00910 | 2020T00854 " textAlignment="CENTER" wrappingWidth="570.6990661621094" />
 
     <!-- Upload Button -->
-    <Button maxWidth="572.0" minHeight="50.0" onAction="#addCSVFileOnAction" prefHeight="50.0" prefWidth="572.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: #2f3542;" text="Upload CSV File" textFill="#2f3542">
+    <Button maxWidth="572.0" minHeight="50.0" onAction="#addCSVFileOnAction" prefHeight="50.0" prefWidth="572.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: #ffffff;" text="Upload CSV File" textFill="#2f3542">
         <font>
             <Font name="Comfortaa SemiBold" size="14.0" />
         </font>
@@ -59,7 +59,7 @@
         <TextField fx:id="columnIndexField" maxWidth="200.0" minHeight="40.0" minWidth="150.0" promptText="Enter column index" style="-fx-font-family: 'Comfortaa SemiBold';" />
 
         <!-- Show Column Button -->
-        <Button fx:id="showColumnButton" minHeight="40.0" minWidth="100.0" prefHeight="40.0" prefWidth="151.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: #2f3542;" text="Show Column">
+        <Button fx:id="showColumnButton" minHeight="40.0" minWidth="100.0" prefHeight="40.0" prefWidth="151.0" style="-fx-font-family: 'Comfortaa SemiBold'; -fx-background-color: #ff7f50; -fx-text-fill: #ffffff;" text="Show Column">
             <font>
                 <Font name="Comfortaa SemiBold" size="14.0" />
             </font>

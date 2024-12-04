@@ -1,7 +1,6 @@
 package com.assignment.programming3assignment.controllers;
 
 import com.assignment.programming3assignment.algorithms.*;
-import com.assignment.programming3assignment.algorithms.SortingAlgorithm;
 import com.assignment.programming3assignment.util.AlertDialogUtil;
 import com.assignment.programming3assignment.util.ChartUtil;
 import javafx.collections.FXCollections;
@@ -13,7 +12,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
+import java.util.Arrays;
+import java.util.logging.Logger;
+
 public class AnalysisScreenController {
+
+    private static final Logger logger = Logger.getLogger(AnalysisScreenController.class.getName());
+
 
     @FXML
     private Button mergeSortButton;
@@ -58,14 +63,19 @@ public class AnalysisScreenController {
     private double shellSortTime = Double.MAX_VALUE;
     private double heapSortTime = Double.MAX_VALUE;
 
+    private ObservableList<Double> originalData; // Keep the original data
+
     public void setColumnData(String columnHeader, ObservableList<Double> columnData) {
+
+        this.originalData = FXCollections.observableArrayList(columnData); // Store the original data
+
         TableColumn<Double, Double> column = new TableColumn<>(columnHeader);
         column.setCellValueFactory(cellData -> new javafx.beans.property.SimpleObjectProperty<>(cellData.getValue()));
         column.setPrefWidth(columnTableView.getPrefWidth() - 20);
 
         columnTableView.getColumns().clear();
         columnTableView.getColumns().add(column);
-        columnTableView.setItems(columnData);
+        columnTableView.setItems(FXCollections.observableArrayList(originalData)); // Display original data initially
     }
 
     @FXML
@@ -92,6 +102,65 @@ public class AnalysisScreenController {
         });
 
         showBestButton.setOnAction(event -> showBestAlgorithm());
+    }
+
+    private double performSort(SortingAlgorithm algorithm, Label timeLabel) {
+        double[] dataArray = originalData.stream().mapToDouble(Double::doubleValue).toArray();
+
+        logger.info("Starting sort with algorithm: " + algorithm.getName());
+        logger.info("Original data before sorting: " + Arrays.toString(dataArray));
+
+
+        long duration = measureSortingTime(() -> algorithm.sort(dataArray));
+        double timeInMs = duration / 1_000_000.0;
+
+        logger.info("Data after sorting with " + algorithm.getName() + ": " + Arrays.toString(dataArray));
+        logger.info(algorithm.getName() + " took " + timeInMs + " ms");
+
+        updateTable(dataArray);
+        timeLabel.setText(String.format("%.2f ms", timeInMs));
+        return timeInMs;
+    }
+
+    private double[] getOriginalDataArray() {
+        logger.info("Fetching original data for sorting.");
+        double[] dataArray = new double[originalData.size()];
+        for (int i = 0; i < originalData.size(); i++) {
+            dataArray[i] = originalData.get(i);
+        }
+        logger.info("Original data array: " + Arrays.toString(dataArray));
+        return dataArray;
+    }
+
+
+    private void updateTable(double[] sortedData) {
+        ObservableList<Double> updatedData = FXCollections.observableArrayList();
+        for (double value : sortedData) {
+            updatedData.add(value);
+        }
+        columnTableView.setItems(updatedData); // Display sorted data
+    }
+
+    private long measureSortingTime(Runnable sortingAlgorithm) {
+        long startTime = System.nanoTime();
+        sortingAlgorithm.run();
+        return System.nanoTime() - startTime;
+    }
+
+    private void updateBarChart() {
+        chartUtil.updateSortingPerformanceChart(
+                sortingTimeBarChart,
+                mergeSortTime,
+                quickSortTime,
+                insertionSortTime,
+                shellSortTime,
+                heapSortTime,
+                mergeSort.getName(),
+                quickSort.getName(),
+                insertionSort.getName(),
+                shellSort.getName(),
+                heapSort.getName()
+        );
     }
 
     private void showBestAlgorithm() {
@@ -137,56 +206,5 @@ public class AnalysisScreenController {
         }
 
         return bestAlgorithmIndex;
-    }
-
-    private void updateBarChart() {
-        chartUtil.updateSortingPerformanceChart(
-                sortingTimeBarChart,
-                mergeSortTime,
-                quickSortTime,
-                insertionSortTime,
-                shellSortTime,
-                heapSortTime,
-                mergeSort.getName(),
-                quickSort.getName(),
-                insertionSort.getName(),
-                shellSort.getName(),
-                heapSort.getName()
-        );
-    }
-
-
-
-    private double performSort(SortingAlgorithm algorithm, Label timeLabel) {
-        double[] dataArray = getDataArrayFromTable();
-        long duration = measureSortingTime(() -> algorithm.sort(dataArray));
-        double timeInMs = duration / 1_000_000.0;
-        timeLabel.setText(String.format("%.2f ms", timeInMs));
-        updateTable(dataArray);
-        return timeInMs;
-    }
-
-
-    private double[] getDataArrayFromTable() {
-        ObservableList<Double> data = columnTableView.getItems();
-        double[] dataArray = new double[data.size()];
-        for (int i = 0; i < data.size(); i++) {
-            dataArray[i] = data.get(i);
-        }
-        return dataArray;
-    }
-
-    private void updateTable(double[] sortedData) {
-        ObservableList<Double> updatedData = FXCollections.observableArrayList();
-        for (double value : sortedData) {
-            updatedData.add(value);
-        }
-        columnTableView.setItems(updatedData);
-    }
-
-    private long measureSortingTime(Runnable sortingAlgorithm) {
-        long startTime = System.nanoTime();
-        sortingAlgorithm.run();
-        return System.nanoTime() - startTime;
     }
 }

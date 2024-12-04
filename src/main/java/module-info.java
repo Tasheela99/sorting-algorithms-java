@@ -1,6 +1,7 @@
 module com.assignment.programming3assignment {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.logging;
 
 
     opens com.assignment.programming3assignment to javafx.fxml;

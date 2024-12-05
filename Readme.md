@@ -1,4 +1,4 @@
-# JavaFX Application
+# Sorting Algorithm Performance Evaluator Application
 
 ## Prerequisites
 
